@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+# LƯU Ý: KHÔNG bỏ qua data/paper.db — state paper cần commit để bền vững giữa
+# các lần CI chạy. Đây là dữ liệu ẢO (paper), không có secret.

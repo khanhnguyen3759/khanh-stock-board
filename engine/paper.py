@@ -1,0 +1,99 @@
+"""Vòng lặp paper: data -> strategy -> risk gate -> executor -> state.
+
+Cấu hình qua biến môi trường (không secret):
+  WATCHLIST, PAPER_CAPITAL, MIN_ORDER_VALUE, MA_FAST, MA_SLOW, DB_PATH
+"""
+from __future__ import annotations
+
+import os
+from dataclasses import dataclass
+from datetime import date
+
+import pandas as pd
+
+from .executor import PaperExecutor, buy_fees
+from .feed import DataFeed
+from .risk import LOT_SIZE, check_buy
+from .store import Store
+from .strategy import BUY, SELL, MACrossStrategy
+
+LOOKBACK_DAYS = 150
+
+
+@dataclass
+class Config:
+    watchlist: tuple[str, ...]
+    paper_capital: int
+    min_order_value: int
+    ma_fast: int
+    ma_slow: int
+    db_path: str
+
+    @classmethod
+    def load(cls) -> "Config":
+        wl = tuple(s.strip().upper()
+                   for s in os.environ.get("WATCHLIST", "ACB,FPT,MWG").split(",") if s.strip())
+        return cls(
+            watchlist=wl,
+            paper_capital=int(os.environ.get("PAPER_CAPITAL", "200000000")),
+            min_order_value=int(os.environ.get("MIN_ORDER_VALUE", "1000000")),
+            ma_fast=int(os.environ.get("MA_FAST", "10")),
+            ma_slow=int(os.environ.get("MA_SLOW", "20")),
+            db_path=os.environ.get("DB_PATH", "data/paper.db"),
+        )
+
+
+def _bar_date(df: pd.DataFrame) -> str:
+    return str(df["time"].iloc[-1])[:10]
+
+
+def _desired_qty(cfg: Config, price: float) -> int:
+    if price <= 0:
+        return 0
+    target = cfg.paper_capital / max(len(cfg.watchlist), 1)
+    return (int(target // price) // LOT_SIZE) * LOT_SIZE
+
+
+def process(cfg, store, strategy, executor, symbol, df) -> dict | None:
+    """Xử lý 1 mã trên 1 khung dữ liệu. Trả dict mô tả hành động (cho log)."""
+    pos = store.get_position(symbol)
+    sig = strategy.signal(symbol, df, holding=pos is not None)
+    if sig.action not in (BUY, SELL):
+        return None
+    price, bar = sig.price, _bar_date(df)
+
+    if sig.action == BUY:
+        qty = _desired_qty(cfg, price)
+        fees = buy_fees(price, qty) if qty else 0.0
+        decision = check_buy(price=price, qty=qty, fees=fees,
+                             available_cash=store.get_cash(),
+                             max_capital=cfg.paper_capital, deployed=store.deployed(),
+                             min_order_value=cfg.min_order_value)
+        if not decision.allowed:
+            return {"symbol": symbol, "action": "buy_blocked", "reason": decision.reason}
+        fill = executor.buy(symbol, decision.adjusted_qty, price, f"{symbol}-buy-{bar}", sig.reason)
+        return {"symbol": symbol, "action": "buy", "ok": fill.ok,
+                "skipped": fill.skipped, "qty": fill.qty, "price": price, "reason": fill.reason}
+
+    if sig.action == SELL and pos:
+        fill = executor.sell(symbol, pos.qty, price, f"{symbol}-sell-{bar}", sig.reason)
+        return {"symbol": symbol, "action": "sell", "ok": fill.ok,
+                "skipped": fill.skipped, "qty": fill.qty, "price": price, "reason": fill.reason}
+    return None
+
+
+def run_tick(cfg: Config, store: Store, feed: DataFeed | None = None) -> list[dict]:
+    feed = feed or DataFeed()
+    strategy = MACrossStrategy(cfg.ma_fast, cfg.ma_slow)
+    executor = PaperExecutor(store)
+    events = []
+    for symbol in cfg.watchlist:
+        try:
+            df = feed.history(symbol, days=LOOKBACK_DAYS)
+        except Exception as exc:  # noqa: BLE001
+            events.append({"symbol": symbol, "action": "error", "reason": str(exc)})
+            continue
+        ev = process(cfg, store, strategy, executor, symbol, df)
+        if ev:
+            events.append(ev)
+    return events

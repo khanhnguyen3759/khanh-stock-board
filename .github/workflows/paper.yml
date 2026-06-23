@@ -1,0 +1,45 @@
+name: Paper trading tick
+
+# Chạy 1 tick paper sau khi HOSE đóng cửa: 08:30 UTC = 15:30 giờ VN, T2–T6.
+# Cũng cho phép chạy tay qua tab Actions (workflow_dispatch).
+on:
+  schedule:
+    - cron: "30 8 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write        # để commit lại state + data.json
+
+concurrency:
+  group: paper-tick
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cài dependencies
+        run: pip install -r requirements.txt
+
+      - name: Chạy tick paper + cập nhật board
+        run: python -m scripts.run
+
+      - name: Commit state + board nếu có thay đổi
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/paper.db board/data.json
+          if git diff --cached --quiet; then
+            echo "Không có thay đổi — bỏ qua commit."
+          else
+            git commit -m "Paper tick $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
