@@ -36,6 +36,13 @@ def build_snapshot(cfg: Config, store: Store, feed: DataFeed, events: list[dict]
     equity = cash + market_value
     realized = store.total_realized_pnl()
 
+    # mốc GO-LIVE: ranh giới giữa backtest (tái dựng quá khứ) và giả lập thật.
+    # Lần đầu chạy build_snapshot sẽ chốt = hôm nay; sau đó giữ nguyên.
+    go_live = store.get_meta("go_live")
+    if go_live is None:
+        go_live = date.today().isoformat()
+        store.set_meta("go_live", go_live)
+
     # ghi điểm equity hôm nay (đường equity)
     store.record_equity(date.today().isoformat(), equity)
 
@@ -51,6 +58,7 @@ def build_snapshot(cfg: Config, store: Store, feed: DataFeed, events: list[dict]
         "updated_at": datetime.now(tz=timezone.utc).isoformat(timespec="seconds"),
         "watchlist": list(cfg.watchlist),
         "paper_capital": cfg.paper_capital,
+        "go_live": go_live,
         "strategy": f"MA cross ({cfg.ma_fast}/{cfg.ma_slow})",
         "cash": round(cash),
         "market_value": round(market_value),

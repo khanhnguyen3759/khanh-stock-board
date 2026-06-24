@@ -65,7 +65,7 @@
       tục, nhìn biểu đồ Đường tài sản phía trên.
     </p>
     <table id="orders"><thead><tr>
-      <th>Ngày GD</th><th>Mã</th><th>Lệnh</th><th>KL</th><th>Giá</th><th>Phí</th><th>Ghi chú</th>
+      <th>Ngày GD</th><th>Nguồn</th><th>Mã</th><th>Lệnh</th><th>KL</th><th>Giá</th><th>Phí</th><th>Ghi chú</th>
     </tr></thead><tbody></tbody></table>
   </div>
 
@@ -116,37 +116,56 @@ async function load() {
      <td class="${signClass(p.pnl)}">${signStr(p.pnl)}</td></tr>`).join("")
     : `<tr><td colspan="6" class="empty">Không có vị thế.</td></tr>`;
 
-  // orders (mới nhất trước)
+  const gl = d.go_live || "9999";
+
+  // orders (mới nhất trước) — gắn nhãn Backtest/Live
   const ob = document.querySelector("#orders tbody");
   const orders = [...d.orders].reverse();
   ob.innerHTML = orders.length ? orders.map(o => {
     const t = o.trade_date || new Date(o.ts).toLocaleDateString("vi-VN");
     const side = o.side === "buy" ? "MUA" : "BÁN";
-    return `<tr><td>${t}</td><td>${o.symbol}</td>
+    const isLive = (o.trade_date || "") >= gl;
+    const src = isLive
+      ? `<span style="color:var(--green)">● Live</span>`
+      : `<span style="color:var(--muted)">Backtest</span>`;
+    return `<tr><td>${t}</td><td>${src}</td><td>${o.symbol}</td>
       <td class="side-${o.side}">${side}</td><td>${o.qty.toLocaleString("vi-VN")}</td>
       <td>${VND(o.price)}</td><td>${VND(o.fees)}</td><td style="text-align:left;color:var(--muted)">${o.note}</td></tr>`;
-  }).join("") : `<tr><td colspan="7" class="empty">Chưa có lệnh nào.</td></tr>`;
+  }).join("") : `<tr><td colspan="8" class="empty">Chưa có lệnh nào.</td></tr>`;
 
-  // equity chart
+  // equity chart — tách 2 vùng tại GO-LIVE: Backtest (giá như) vs Live (thật)
+  const curve = d.equity_curve;
+  const bIdx = curve.findIndex(p => p.day >= gl);   // điểm đầu tiên thuộc Live
+  const btData = curve.map((p, i) => (bIdx < 0 || i <= bIdx) ? p.equity : null);
+  const liveData = curve.map((p, i) => (bIdx >= 0 && i >= bIdx) ? p.equity : null);
   const ctx = document.getElementById("equityChart");
   new Chart(ctx, {
     type: "line",
     data: {
-      labels: d.equity_curve.map(p => p.day),
+      labels: curve.map(p => p.day),
       datasets: [{
-        label: "Equity (₫)",
-        data: d.equity_curve.map(p => p.equity),
-        borderColor: "#58a6ff", backgroundColor: "rgba(88,166,255,0.12)",
+        label: "Backtest (tái dựng quá khứ)",
+        data: btData,
+        borderColor: "#8b949e", backgroundColor: "rgba(139,148,158,0.10)",
+        fill: true, pointRadius: 0, borderWidth: 2, tension: 0.15,
+      }, {
+        label: "Live (giả lập thật từ GO-LIVE)",
+        data: liveData,
+        borderColor: "#3fb950", backgroundColor: "rgba(63,185,80,0.15)",
         fill: true, pointRadius: 0, borderWidth: 2, tension: 0.15,
       }, {
         label: "Vốn ban đầu",
-        data: d.equity_curve.map(() => d.paper_capital),
-        borderColor: "#8b949e", borderDash: [5,5], pointRadius: 0, borderWidth: 1, fill: false,
+        data: curve.map(() => d.paper_capital),
+        borderColor: "#f0883e", borderDash: [5,5], pointRadius: 0, borderWidth: 1, fill: false,
       }],
     },
     options: {
       responsive: true, interaction: { intersect: false, mode: "index" },
-      plugins: { legend: { labels: { color: "#e6edf3" } } },
+      plugins: {
+        legend: { labels: { color: "#e6edf3" } },
+        title: { display: true, color: "#8b949e",
+          text: `GO-LIVE = ${gl} (trái = backtest, phải = giả lập thật)` },
+      },
       scales: {
         x: { ticks: { color: "#8b949e", maxTicksLimit: 10 }, grid: { color: "#21262d" } },
         y: { ticks: { color: "#8b949e", callback: v => (v/1e6).toFixed(0) + "M" }, grid: { color: "#21262d" } },
