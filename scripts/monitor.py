@@ -87,14 +87,14 @@ def main() -> int:
 
         pushed = False
         if reason:
+            # ghi meta TRƯỚC để nằm trong cùng commit paper.db (tree luôn sạch)
+            store.set_meta("last_push_day", today)
+            store.set_meta("last_push_ts", now.isoformat())
             msg = f"Monitor {today} {now:%H:%M} VN ({reason}) — equity {snap['equity']:,}"
             try:
                 pushed = git_push(msg)
             except subprocess.CalledProcessError as exc:
                 print(f"[push lỗi] {exc}")
-            if pushed:
-                store.set_meta("last_push_day", today)
-                store.set_meta("last_push_ts", now.isoformat())
 
     print(f"{now:%Y-%m-%d %H:%M} VN | {status} | equity {snap['equity']:,} | "
           f"lệnh {snap['order_count']} | push: {reason or 'không'}"
