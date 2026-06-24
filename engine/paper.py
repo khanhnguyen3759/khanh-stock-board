@@ -7,9 +7,17 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from datetime import date
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import pandas as pd
+
+VN_TZ = ZoneInfo("Asia/Ho_Chi_Minh")
+
+
+def today_vn() -> str:
+    """Ngày hôm nay theo giờ VN (yyyy-mm-dd)."""
+    return datetime.now(tz=VN_TZ).date().isoformat()
 
 from .executor import PaperExecutor, buy_fees
 from .feed import DataFeed
@@ -71,27 +79,37 @@ def process(cfg, store, strategy, executor, symbol, df) -> dict | None:
                              min_order_value=cfg.min_order_value)
         if not decision.allowed:
             return {"symbol": symbol, "action": "buy_blocked", "reason": decision.reason}
-        fill = executor.buy(symbol, decision.adjusted_qty, price, f"{symbol}-buy-{bar}", sig.reason)
+        fill = executor.buy(symbol, decision.adjusted_qty, price,
+                            f"{symbol}-buy-{bar}", sig.reason, trade_date=bar)
         return {"symbol": symbol, "action": "buy", "ok": fill.ok,
                 "skipped": fill.skipped, "qty": fill.qty, "price": price, "reason": fill.reason}
 
     if sig.action == SELL and pos:
-        fill = executor.sell(symbol, pos.qty, price, f"{symbol}-sell-{bar}", sig.reason)
+        fill = executor.sell(symbol, pos.qty, price,
+                             f"{symbol}-sell-{bar}", sig.reason, trade_date=bar)
         return {"symbol": symbol, "action": "sell", "ok": fill.ok,
                 "skipped": fill.skipped, "qty": fill.qty, "price": price, "reason": fill.reason}
     return None
 
 
 def run_tick(cfg: Config, store: Store, feed: DataFeed | None = None) -> list[dict]:
+    """1 tick LIVE. Chỉ giao dịch nếu nến mới nhất = hôm nay (giờ VN) -> tránh
+    đặt lệnh trên dữ liệu cũ (ngày nghỉ/lễ hoặc data chưa cập nhật)."""
     feed = feed or DataFeed()
     strategy = MACrossStrategy(cfg.ma_fast, cfg.ma_slow)
     executor = PaperExecutor(store)
+    today = today_vn()
     events = []
     for symbol in cfg.watchlist:
         try:
             df = feed.history(symbol, days=LOOKBACK_DAYS)
         except Exception as exc:  # noqa: BLE001
             events.append({"symbol": symbol, "action": "error", "reason": str(exc)})
+            continue
+        bar = _bar_date(df)
+        if bar != today:
+            events.append({"symbol": symbol, "action": "skip_stale",
+                           "reason": f"Nến mới nhất {bar} ≠ hôm nay {today} (ngày nghỉ/data chưa cập nhật)"})
             continue
         ev = process(cfg, store, strategy, executor, symbol, df)
         if ev:

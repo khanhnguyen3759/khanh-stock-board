@@ -59,8 +59,13 @@
 
   <div class="panel">
     <h2>Lịch sử lệnh (mới nhất trước)</h2>
+    <p style="color:var(--muted);font-size:12px;margin:-4px 0 12px">
+      Chiến lược chỉ vào/ra lệnh khi có giao cắt MA (golden/death cross) — không
+      mua bán mỗi ngày. "Ngày GD" là ngày phiên thật của lệnh. Để xem lời/lỗ liên
+      tục, nhìn biểu đồ Đường tài sản phía trên.
+    </p>
     <table id="orders"><thead><tr>
-      <th>Thời gian</th><th>Mã</th><th>Lệnh</th><th>KL</th><th>Giá</th><th>Phí</th><th>Ghi chú</th>
+      <th>Ngày GD</th><th>Mã</th><th>Lệnh</th><th>KL</th><th>Giá</th><th>Phí</th><th>Ghi chú</th>
     </tr></thead><tbody></tbody></table>
   </div>
 
@@ -109,7 +114,7 @@ async function load() {
   const ob = document.querySelector("#orders tbody");
   const orders = [...d.orders].reverse();
   ob.innerHTML = orders.length ? orders.map(o => {
-    const t = new Date(o.ts).toLocaleString("vi-VN");
+    const t = o.trade_date || new Date(o.ts).toLocaleDateString("vi-VN");
     const side = o.side === "buy" ? "MUA" : "BÁN";
     return `<tr><td>${t}</td><td>${o.symbol}</td>
       <td class="side-${o.side}">${side}</td><td>${o.qty.toLocaleString("vi-VN")}</td>

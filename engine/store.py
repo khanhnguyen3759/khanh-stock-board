@@ -13,7 +13,9 @@ SCHEMA = """
 CREATE TABLE IF NOT EXISTS orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     client_id TEXT UNIQUE NOT NULL,
-    ts TEXT NOT NULL, symbol TEXT NOT NULL, side TEXT NOT NULL,
+    ts TEXT NOT NULL,            -- thời điểm script chạy (UTC)
+    trade_date TEXT NOT NULL,    -- NGÀY GIAO DỊCH thật (theo nến) — để xem dòng thời gian
+    symbol TEXT NOT NULL, side TEXT NOT NULL,
     qty INTEGER NOT NULL, price REAL NOT NULL, fees REAL NOT NULL,
     mode TEXT NOT NULL, note TEXT
 );
@@ -55,6 +57,7 @@ class Order:
     mode: str
     note: str = ""
     ts: str = ""
+    trade_date: str = ""    # ngày giao dịch thật (theo nến)
 
 
 class Store:
@@ -117,10 +120,10 @@ class Store:
         try:
             with self._conn:
                 self._conn.execute(
-                    "INSERT INTO orders(client_id,ts,symbol,side,qty,price,fees,mode,note) "
-                    "VALUES(?,?,?,?,?,?,?,?,?)",
-                    (order.client_id, order.ts or _now(), order.symbol, order.side,
-                     order.qty, order.price, order.fees, order.mode, order.note))
+                    "INSERT INTO orders(client_id,ts,trade_date,symbol,side,qty,price,fees,mode,note) "
+                    "VALUES(?,?,?,?,?,?,?,?,?,?)",
+                    (order.client_id, order.ts or _now(), order.trade_date, order.symbol,
+                     order.side, order.qty, order.price, order.fees, order.mode, order.note))
                 self._conn.execute(
                     "INSERT INTO meta(key,value) VALUES('cash',?) "
                     "ON CONFLICT(key) DO UPDATE SET value=excluded.value", (f"{new_cash:.2f}",))

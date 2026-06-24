@@ -51,4 +51,9 @@ Settings → Pages → **Source: Deploy from a branch** → Branch `main`, thư 
 → Save. (GitHub Pages chỉ cho chọn `/(root)` hoặc `/docs` — nên dùng `/docs`.)
 Vài phút sau truy cập link board ở trên.
 
-GitHub Actions tự chạy tick **15:30 giờ VN (T2–T6)**; có thể bấm chạy tay ở tab Actions.
+GitHub Actions tự chạy tick **~18:00 giờ VN (T2–T6)** — sau khi dữ liệu EOD đã chốt
+(GitHub cron là best-effort nên giờ thực tế có thể trễ; engine chỉ giao dịch khi nến
+mới nhất = hôm nay nên trễ vẫn an toàn). Có thể bấm chạy tay ở tab Actions.
+
+> **Chiến lược chỉ giao dịch khi có giao cắt MA** (vài lần/tháng mỗi mã), không mua
+> bán mỗi ngày. Theo dõi lời/lỗ liên tục qua **đường Equity**, không phải số dòng lệnh.

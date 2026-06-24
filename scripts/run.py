@@ -40,7 +40,8 @@ def build_snapshot(cfg: Config, store: Store, feed: DataFeed, events: list[dict]
     store.record_equity(date.today().isoformat(), equity)
 
     orders = [{
-        "ts": r["ts"], "symbol": r["symbol"], "side": r["side"], "qty": r["qty"],
+        "trade_date": r["trade_date"], "ts": r["ts"],
+        "symbol": r["symbol"], "side": r["side"], "qty": r["qty"],
         "price": round(r["price"]), "fees": round(r["fees"]), "note": r["note"] or "",
     } for r in store.orders()]
 

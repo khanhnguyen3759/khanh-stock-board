@@ -37,7 +37,7 @@ class PaperExecutor:
     def __init__(self, store: Store):
         self._store = store
 
-    def buy(self, symbol, qty, price, client_id, note="") -> Fill:
+    def buy(self, symbol, qty, price, client_id, note="", trade_date="") -> Fill:
         if qty <= 0:
             return Fill(False, symbol, "buy", 0, price, 0, "qty <= 0")
         if self._store.has_order(client_id):
@@ -53,12 +53,13 @@ class PaperExecutor:
         old_cost = pos.cost_basis if pos else 0.0
         new_qty = old_qty + qty
         new_avg = (old_cost + cost) / new_qty
-        order = Order(client_id, symbol, "buy", qty, price, fees, self.mode, note)
+        order = Order(client_id, symbol, "buy", qty, price, fees, self.mode, note,
+                      trade_date=trade_date)
         if not self._store.apply_fill(order, cash - cost, new_qty, new_avg):
             return Fill(True, symbol, "buy", qty, price, fees, "Đã ghi", skipped=True)
         return Fill(True, symbol, "buy", qty, price, fees, "OK")
 
-    def sell(self, symbol, qty, price, client_id, note="") -> Fill:
+    def sell(self, symbol, qty, price, client_id, note="", trade_date="") -> Fill:
         if qty <= 0:
             return Fill(False, symbol, "sell", 0, price, 0, "qty <= 0")
         if self._store.has_order(client_id):
@@ -74,7 +75,8 @@ class PaperExecutor:
         pnl = (price - pos.avg_price) * qty - fees
         new_qty = pos.qty - qty
         new_avg = pos.avg_price if new_qty > 0 else 0.0
-        order = Order(client_id, symbol, "sell", qty, price, fees, self.mode, note)
+        order = Order(client_id, symbol, "sell", qty, price, fees, self.mode, note,
+                      trade_date=trade_date)
         if not self._store.apply_fill(order, cash + proceeds, new_qty, new_avg,
                                       realized=(pos.avg_price, price, pnl)):
             return Fill(True, symbol, "sell", qty, price, fees, "Đã ghi", skipped=True)
