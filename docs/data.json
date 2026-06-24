@@ -1432,5 +1432,15 @@
       "equity": 189391702
     }
   ],
-  "last_events": []
+  "last_events": [
+    {
+      "symbol": "MWG",
+      "action": "buy",
+      "ok": true,
+      "skipped": false,
+      "qty": 800,
+      "price": 77800.0,
+      "reason": "OK"
+    }
+  ]
 }
