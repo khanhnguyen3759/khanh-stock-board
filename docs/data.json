@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-24T00:37:03+00:00",
+  "updated_at": "2026-06-24T11:22:11+00:00",
   "watchlist": [
     "ACB",
     "FPT",
@@ -7,21 +7,29 @@
   ],
   "paper_capital": 200000000,
   "strategy": "MA cross (10/20)",
-  "cash": 119735062,
-  "market_value": 69285000,
-  "equity": 189020062,
+  "cash": 57401702,
+  "market_value": 131990000,
+  "equity": 189391702,
   "realized_pnl": -13918568,
-  "unrealized_pnl": 2938629,
-  "total_pnl": -10979938,
-  "order_count": 33,
+  "unrealized_pnl": 3310270,
+  "total_pnl": -10608298,
+  "order_count": 34,
   "positions": [
     {
       "symbol": "ACB",
       "qty": 3100,
       "avg_price": 21402,
-      "last": 22350,
-      "market_value": 69285000,
-      "pnl": 2938629
+      "last": 22500,
+      "market_value": 69750000,
+      "pnl": 3403629
+    },
+    {
+      "symbol": "MWG",
+      "qty": 800,
+      "avg_price": 77917,
+      "last": 77800,
+      "market_value": 62240000,
+      "pnl": -93360
     }
   ],
   "orders": [
@@ -321,6 +329,15 @@
       "price": 71600,
       "fees": 161100,
       "note": "Death cross: MA10 73,310 < MA20 73,444"
+    },
+    {
+      "ts": "2026-06-24T11:22:08.473888+00:00",
+      "symbol": "MWG",
+      "side": "buy",
+      "qty": 800,
+      "price": 77800,
+      "fees": 93360,
+      "note": "Golden cross: MA10 77,890 > MA20 77,840"
     }
   ],
   "equity_curve": [
@@ -1382,8 +1399,18 @@
     },
     {
       "day": "2026-06-24",
-      "equity": 189020062
+      "equity": 189391702
     }
   ],
-  "last_events": []
+  "last_events": [
+    {
+      "symbol": "MWG",
+      "action": "buy",
+      "ok": true,
+      "skipped": false,
+      "qty": 800,
+      "price": 77800.0,
+      "reason": "OK"
+    }
+  ]
 }
