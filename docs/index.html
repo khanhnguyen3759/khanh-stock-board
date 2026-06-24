@@ -84,12 +84,18 @@ async function load() {
   try { d = await (await fetch("./data.json?_=" + Date.now())).json(); }
   catch (e) { document.getElementById("subtitle").textContent = "Chưa có data.json — chờ lần chạy đầu tiên."; return; }
 
-  const updated = new Date(d.updated_at).toLocaleString("vi-VN");
+  const updated = new Date(d.checked_at || d.updated_at).toLocaleString("vi-VN");
+  const st = d.market_status || "";
+  const stColor = st.includes("mở") ? "var(--green)" : (st.includes("Nghỉ") ? "var(--muted)" : "var(--accent)");
+  // cảnh báo nếu board cũ > 24h (nhịp tim ngừng)
+  const ageH = (Date.now() - new Date(d.checked_at || d.updated_at)) / 3.6e6;
+  const stale = ageH > 24 ? `<span class="badge" style="color:var(--red)">⚠ Chưa cập nhật ${ageH.toFixed(0)}h — kiểm tra monitor</span>` : "";
   document.getElementById("subtitle").innerHTML =
+    (st ? `<span class="badge" style="color:${stColor}">● ${st}</span>` : "") +
     `<span class="badge">Chiến lược: ${d.strategy}</span>` +
     `<span class="badge">Watchlist: ${d.watchlist.join(", ")}</span>` +
     `<span class="badge">Vốn ban đầu: ${VND(d.paper_capital)}</span>` +
-    `<span class="badge">Cập nhật: ${updated}</span>`;
+    `<span class="badge">Nhịp tim: ${updated}</span>` + stale;
 
   const cards = [
     ["Tổng tài sản", VND(d.equity), ""],

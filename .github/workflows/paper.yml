@@ -1,13 +1,9 @@
 name: Paper trading tick
 
-# Chạy 1 tick paper sau khi dữ liệu EOD đã chốt: 11:00 UTC = 18:00 giờ VN, T2–T6.
-# (HOSE đóng 15:00 VN nhưng dữ liệu EOD của nhà cung cấp cập nhật trễ vài giờ.)
-# GitHub cron là best-effort, có thể trễ — engine có guard chỉ giao dịch khi
-# nến mới nhất = hôm nay nên chạy trễ vẫn an toàn.
-# Cũng cho phép chạy tay qua tab Actions (workflow_dispatch).
+# Driver chính hiện là MONITOR chạy trên VM (systemd) — xem scripts/monitor.py.
+# Cron ở đây ĐÃ TẮT để tránh push trùng/đụng nhau với VM.
+# Vẫn giữ workflow_dispatch để chạy tay dự phòng khi VM down.
 on:
-  schedule:
-    - cron: "0 11 * * 1-5"
   workflow_dispatch:
 
 permissions:
