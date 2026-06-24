@@ -1,4 +1,4 @@
-"""Entrypoint board: chạy 1 tick paper -> cập nhật state -> xuất board/data.json.
+"""Entrypoint board: chạy 1 tick paper -> cập nhật state -> xuất docs/data.json.
 
 Chạy:  python -m scripts.run
 KHÔNG cần secret. Chỉ dùng dữ liệu giá công khai (vnstock).
@@ -13,7 +13,7 @@ from engine.feed import DataFeed
 from engine.paper import Config, run_tick
 from engine.store import Store
 
-BOARD_JSON = Path("board/data.json")
+BOARD_JSON = Path("docs/data.json")
 
 
 def build_snapshot(cfg: Config, store: Store, feed: DataFeed, events: list[dict]) -> dict:

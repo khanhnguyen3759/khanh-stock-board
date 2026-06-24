@@ -10,21 +10,22 @@ biểu đồ đường tài sản + lịch sử lệnh, hiển thị qua GitHub 
 
 ## Xem board
 
-Sau khi bật GitHub Pages (xem dưới): **https://khanhnguyen3759.github.io/khanh-stock-board/board/**
+Sau khi bật GitHub Pages (xem dưới): **https://khanhnguyen3759.github.io/khanh-stock-board/**
 
 ## Cách hoạt động
 
 ```
 vnstock (giá VND) → MA cross → risk gate (trần vốn) → paper executor → SQLite
                                                                           ↓
-                                            board/data.json → trang Pages (Chart.js)
+                                            docs/data.json → trang Pages (Chart.js)
 ```
 
 - `engine/` — engine paper tự chứa: feed giá, strategy MA cross, risk gate, paper
   executor, state SQLite (idempotent qua `client_id` → chạy lại không nhân đôi lệnh).
-- `scripts/run.py` — chạy 1 tick, cập nhật state, xuất `board/data.json`.
+- `scripts/run.py` — chạy 1 tick, cập nhật state, xuất `docs/data.json`.
 - `scripts/seed.py` — seed lịch sử ban đầu (backtest) để board có dữ liệu ngay.
-- `board/` — trang tĩnh hiển thị (HTML + Chart.js), đọc `data.json`.
+- `docs/` — trang tĩnh hiển thị (HTML + Chart.js), đọc `data.json`. GitHub Pages
+  phục vụ từ thư mục này.
 - `data/paper.db` — state mô phỏng (commit lại mỗi lần CI để bền vững).
 
 ## Cấu hình (biến môi trường, đều có mặc định)
@@ -41,12 +42,13 @@ vnstock (giá VND) → MA cross → risk gate (trần vốn) → paper executor 
 ```bash
 pip install -r requirements.txt
 python -m scripts.seed 365     # 1 lần, tạo lịch sử ban đầu (DB sạch)
-python -m scripts.run          # 1 tick, cập nhật board/data.json
+python -m scripts.run          # 1 tick, cập nhật docs/data.json
 ```
 
 ## Bật GitHub Pages (làm 1 lần)
 
-Settings → Pages → **Source: Deploy from a branch** → Branch `main`, thư mục `/board`
-→ Save. Vài phút sau truy cập link board ở trên.
+Settings → Pages → **Source: Deploy from a branch** → Branch `main`, thư mục `/docs`
+→ Save. (GitHub Pages chỉ cho chọn `/(root)` hoặc `/docs` — nên dùng `/docs`.)
+Vài phút sau truy cập link board ở trên.
 
 GitHub Actions tự chạy tick **15:30 giờ VN (T2–T6)**; có thể bấm chạy tay ở tab Actions.
