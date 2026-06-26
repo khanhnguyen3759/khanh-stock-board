@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T08:00:10+00:00",
+  "updated_at": "2026-06-26T08:30:38+00:00",
   "watchlist": [
     "ACB",
     "FPT",
@@ -8,22 +8,14 @@
   "paper_capital": 200000000,
   "go_live": "2026-06-24",
   "strategy": "MA cross (10/20)",
-  "cash": 57401702,
-  "market_value": 132860000,
-  "equity": 190261702,
-  "realized_pnl": -13918568,
-  "unrealized_pnl": 4180270,
-  "total_pnl": -9738298,
-  "order_count": 34,
+  "cash": 127286552,
+  "market_value": 62800000,
+  "equity": 190086552,
+  "realized_pnl": -10380089,
+  "unrealized_pnl": 466640,
+  "total_pnl": -9913448,
+  "order_count": 35,
   "positions": [
-    {
-      "symbol": "ACB",
-      "qty": 3100,
-      "avg_price": 21402,
-      "last": 22600,
-      "market_value": 70060000,
-      "pnl": 3713629
-    },
     {
       "symbol": "MWG",
       "qty": 800,
@@ -373,6 +365,16 @@
       "price": 77800,
       "fees": 93360,
       "note": "Golden cross: MA10 77,890 > MA20 77,840"
+    },
+    {
+      "trade_date": "2026-06-26",
+      "ts": "2026-06-26T08:30:37.072576+00:00",
+      "symbol": "ACB",
+      "side": "sell",
+      "qty": 3100,
+      "price": 22600,
+      "fees": 175150,
+      "note": "Death cross: MA10 22,350 < MA20 22,360"
     }
   ],
   "equity_curve": [
@@ -1438,10 +1440,20 @@
     },
     {
       "day": "2026-06-26",
-      "equity": 190261702
+      "equity": 190086552
     }
   ],
-  "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-06-26T15:00:01+07:00"
+  "last_events": [
+    {
+      "symbol": "ACB",
+      "action": "sell",
+      "ok": true,
+      "skipped": false,
+      "qty": 3100,
+      "price": 22600.0,
+      "reason": "OK, P&L 3,538,479"
+    }
+  ],
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-06-26T15:30:30+07:00"
 }
