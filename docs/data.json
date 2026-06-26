@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25T08:00:17+00:00",
+  "updated_at": "2026-06-26T01:00:22+00:00",
   "watchlist": [
     "ACB",
     "FPT",
@@ -1435,9 +1435,13 @@
     {
       "day": "2026-06-25",
       "equity": 188601702
+    },
+    {
+      "day": "2026-06-26",
+      "equity": 188601702
     }
   ],
   "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-06-25T15:00:08+07:00"
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-06-26T08:00:13+07:00"
 }
