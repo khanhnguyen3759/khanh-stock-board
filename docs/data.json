@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T08:30:38+00:00",
+  "updated_at": "2026-06-27T01:00:37+00:00",
   "watchlist": [
     "ACB",
     "FPT",
@@ -1441,19 +1441,13 @@
     {
       "day": "2026-06-26",
       "equity": 190086552
-    }
-  ],
-  "last_events": [
+    },
     {
-      "symbol": "ACB",
-      "action": "sell",
-      "ok": true,
-      "skipped": false,
-      "qty": 3100,
-      "price": 22600.0,
-      "reason": "OK, P&L 3,538,479"
+      "day": "2026-06-27",
+      "equity": 190086552
     }
   ],
-  "market_status": "Đã đóng cửa",
-  "checked_at": "2026-06-26T15:30:30+07:00"
+  "last_events": [],
+  "market_status": "Nghỉ cuối tuần",
+  "checked_at": "2026-06-27T08:00:29+07:00"
 }
