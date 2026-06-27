@@ -12,10 +12,13 @@
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; background: var(--bg); color: var(--text);
+    margin: 0 auto; background: var(--bg); color: var(--text);
     font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    padding: 24px; max-width: 1100px; margin: 0 auto;
+    padding: 24px; max-width: 1500px;
   }
+  /* 2 cột trên màn rộng để lấp chiều ngang; tự xếp dọc trên màn hẹp */
+  .cols2 { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 880px) { .cols2 { grid-template-columns: 1fr; } }
   h1 { font-size: 22px; margin: 0 0 4px; }
   .sub { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
   .badge { display:inline-block; background:var(--card); border:1px solid var(--border);
@@ -47,14 +50,31 @@
 
   <div class="panel">
     <h2>Đường tài sản (Equity)</h2>
-    <canvas id="equityChart" height="110"></canvas>
+    <canvas id="equityChart" height="100"></canvas>
   </div>
 
-  <div class="panel">
-    <h2>Vị thế đang nắm giữ</h2>
-    <table id="positions"><thead><tr>
-      <th>Mã</th><th>KL</th><th>Giá vốn</th><th>Giá hiện tại</th><th>Giá trị</th><th>Lãi/Lỗ</th>
-    </tr></thead><tbody></tbody></table>
+  <div class="cols2">
+    <div class="panel">
+      <h2>📓 Nhật ký quyết định hằng ngày</h2>
+      <p style="color:var(--muted);font-size:12px;margin:-4px 0 12px">
+        Mỗi phiên, app xét TỪNG mã và ghi lại quyết định + lý do — kể cả ngày KHÔNG
+        mua bán (HOLD). Nhìn đây để biết vì sao một ngày trống.
+      </p>
+      <div id="journal"></div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h2>Vị thế đang nắm giữ</h2>
+        <table id="positions"><thead><tr>
+          <th>Mã</th><th>KL</th><th>Giá vốn</th><th>Giá hiện tại</th><th>Giá trị</th><th>Lãi/Lỗ</th>
+        </tr></thead><tbody></tbody></table>
+      </div>
+      <div class="panel">
+        <h2>🤖 Phân tích cơ bản bằng AI (Claude)</h2>
+        <div id="ai"></div>
+      </div>
+    </div>
   </div>
 
   <div class="panel">
@@ -67,20 +87,6 @@
     <table id="orders"><thead><tr>
       <th>Ngày GD</th><th>Nguồn</th><th>Mã</th><th>Lệnh</th><th>KL</th><th>Giá</th><th>Phí</th><th>Ghi chú</th>
     </tr></thead><tbody></tbody></table>
-  </div>
-
-  <div class="panel">
-    <h2>📓 Nhật ký quyết định hằng ngày</h2>
-    <p style="color:var(--muted);font-size:12px;margin:-4px 0 12px">
-      Mỗi phiên, app xét TỪNG mã và ghi lại quyết định + lý do — kể cả ngày KHÔNG
-      mua bán (HOLD). Nhìn đây để biết vì sao một ngày trống.
-    </p>
-    <div id="journal"></div>
-  </div>
-
-  <div class="panel">
-    <h2>🤖 Phân tích cơ bản bằng AI (Claude)</h2>
-    <div id="ai"></div>
   </div>
 
   <footer>
