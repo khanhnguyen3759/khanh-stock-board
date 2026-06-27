@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-06-27T03:19:35+00:00",
+  "model": "claude-opus-4-8",
+  "picks": [
+    {
+      "symbol": "FPT",
+      "score": 82.0,
+      "recommendation": "mua",
+      "rationale": "Tăng trưởng lợi nhuận hai con số bền vững (LNST +19%), ROE cao 23.6%, biên lợi nhuận tốt. Cờ đỏ nhẹ: định giá khá cao (P/E 15.9, P/B 3.7) và nợ dài hạn tăng mạnh ~100%."
+    },
+    {
+      "symbol": "MWG",
+      "score": 78.0,
+      "recommendation": "mua",
+      "rationale": "Lợi nhuận phục hồi rất mạnh (LNST +89%), ROE 22.9%, P/S thấp 0.84. Cờ đỏ: biên EBIT mỏng (6.5%) và P/E 18.5, P/B 3.9 không rẻ."
+    },
+    {
+      "symbol": "ACB",
+      "score": 74.0,
+      "recommendation": "mua",
+      "rationale": "Định giá hấp dẫn nhất nhóm (P/E 7.4, P/B 1.3), ROE 17.6% ổn định, tăng trưởng tín dụng/tài sản tốt. Cờ đỏ: lợi nhuận trước thuế giảm ~7% và NIM thu hẹp."
+    },
+    {
+      "symbol": "HPG",
+      "score": 68.0,
+      "recommendation": "mua",
+      "rationale": "Tăng trưởng lợi nhuận mạnh (+28%), định giá hợp lý (P/E 12, P/B 1.5). Cờ đỏ: ROE thấp 12.6%, biên gộp mỏng 15.7%, đặc thù chu kỳ thép."
+    },
+    {
+      "symbol": "VNM",
+      "score": 62.0,
+      "recommendation": "theo_doi",
+      "rationale": "ROE rất cao 26.6%, cổ tức tốt 8%, tài chính lành mạnh. Cờ đỏ: tăng trưởng gần như đình trệ (LNST +0.2%, tổng tài sản và vốn chủ giảm), định giá P/B 3.7 chưa rẻ so với mức tăng trưởng."
+    }
+  ]
+}

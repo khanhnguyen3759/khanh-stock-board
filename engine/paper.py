@@ -62,13 +62,15 @@ def _desired_qty(cfg: Config, price: float) -> int:
     return (int(target // price) // LOT_SIZE) * LOT_SIZE
 
 
-def process(cfg, store, strategy, executor, symbol, df) -> dict | None:
-    """Xử lý 1 mã trên 1 khung dữ liệu. Trả dict mô tả hành động (cho log)."""
+def process(cfg, store, strategy, executor, symbol, df) -> dict:
+    """Xử lý 1 mã trên 1 khung dữ liệu. LUÔN trả dict mô tả quyết định + lý do
+    (kể cả HOLD) -> nguồn cho nhật ký quyết định. KHÔNG tự ghi DB (để tái dùng)."""
     pos = store.get_position(symbol)
-    sig = strategy.signal(symbol, df, holding=pos is not None)
-    if sig.action not in (BUY, SELL):
-        return None
+    holding = pos is not None
+    sig = strategy.signal(symbol, df, holding)
     price, bar = sig.price, _bar_date(df)
+    ev = {"symbol": symbol, "bar": bar, "price": price,
+          "action": "hold", "reason": sig.reason}
 
     if sig.action == BUY:
         qty = _desired_qty(cfg, price)
@@ -78,18 +80,18 @@ def process(cfg, store, strategy, executor, symbol, df) -> dict | None:
                              max_capital=cfg.paper_capital, deployed=store.deployed(),
                              min_order_value=cfg.min_order_value)
         if not decision.allowed:
-            return {"symbol": symbol, "action": "buy_blocked", "reason": decision.reason}
-        fill = executor.buy(symbol, decision.adjusted_qty, price,
-                            f"{symbol}-buy-{bar}", sig.reason, trade_date=bar)
-        return {"symbol": symbol, "action": "buy", "ok": fill.ok,
-                "skipped": fill.skipped, "qty": fill.qty, "price": price, "reason": fill.reason}
-
-    if sig.action == SELL and pos:
+            ev.update(action="blocked", reason=f"{sig.reason} | risk gate chặn: {decision.reason}")
+        else:
+            fill = executor.buy(symbol, decision.adjusted_qty, price,
+                                f"{symbol}-buy-{bar}", sig.reason, trade_date=bar)
+            ev.update(action="buy", ok=fill.ok, skipped=fill.skipped, qty=fill.qty,
+                      reason=sig.reason if fill.ok else fill.reason)
+    elif sig.action == SELL and holding:
         fill = executor.sell(symbol, pos.qty, price,
                              f"{symbol}-sell-{bar}", sig.reason, trade_date=bar)
-        return {"symbol": symbol, "action": "sell", "ok": fill.ok,
-                "skipped": fill.skipped, "qty": fill.qty, "price": price, "reason": fill.reason}
-    return None
+        ev.update(action="sell", ok=fill.ok, skipped=fill.skipped, qty=fill.qty,
+                  reason=sig.reason if fill.ok else fill.reason)
+    return ev
 
 
 def run_tick(cfg: Config, store: Store, feed: DataFeed | None = None) -> list[dict]:
@@ -112,6 +114,7 @@ def run_tick(cfg: Config, store: Store, feed: DataFeed | None = None) -> list[di
                            "reason": f"Nến mới nhất {bar} ≠ hôm nay {today} (ngày nghỉ/data chưa cập nhật)"})
             continue
         ev = process(cfg, store, strategy, executor, symbol, df)
-        if ev:
-            events.append(ev)
+        # ghi nhật ký quyết định cho phiên hôm nay (kể cả HOLD, kèm lý do)
+        store.record_decision(bar, symbol, ev["action"], ev["reason"], ev.get("price"))
+        events.append(ev)
     return events

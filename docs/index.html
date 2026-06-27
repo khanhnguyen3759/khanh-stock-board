@@ -69,6 +69,20 @@
     </tr></thead><tbody></tbody></table>
   </div>
 
+  <div class="panel">
+    <h2>📓 Nhật ký quyết định hằng ngày</h2>
+    <p style="color:var(--muted);font-size:12px;margin:-4px 0 12px">
+      Mỗi phiên, app xét TỪNG mã và ghi lại quyết định + lý do — kể cả ngày KHÔNG
+      mua bán (HOLD). Nhìn đây để biết vì sao một ngày trống.
+    </p>
+    <div id="journal"></div>
+  </div>
+
+  <div class="panel">
+    <h2>🤖 Phân tích cơ bản bằng AI (Claude)</h2>
+    <div id="ai"></div>
+  </div>
+
   <footer>
     Mô phỏng paper trading — KHÔNG phải lời khuyên đầu tư. Vốn ảo, dữ liệu giá từ vnstock.
     <br />Nguồn: <a href="https://github.com/khanhnguyen3759/khanh-stock-board">khanh-stock-board</a>
@@ -132,6 +146,52 @@ async function load() {
       <td class="side-${o.side}">${side}</td><td>${o.qty.toLocaleString("vi-VN")}</td>
       <td>${VND(o.price)}</td><td>${VND(o.fees)}</td><td style="text-align:left;color:var(--muted)">${o.note}</td></tr>`;
   }).join("") : `<tr><td colspan="8" class="empty">Chưa có lệnh nào.</td></tr>`;
+
+  // nhật ký quyết định — nhóm theo ngày (mới nhất trước)
+  const jbox = document.getElementById("journal");
+  const log = d.daily_log || [];
+  const actLabel = { buy: "MUA", sell: "BÁN", hold: "Không GD", blocked: "Bị chặn", skip: "Bỏ qua" };
+  const actColor = a => a === "buy" ? "var(--green)" : a === "sell" ? "var(--red)"
+    : a === "blocked" ? "#f0883e" : "var(--muted)";
+  if (!log.length) {
+    jbox.innerHTML = `<div class="empty">Chưa có nhật ký.</div>`;
+  } else {
+    const byDay = {};
+    log.forEach(r => (byDay[r.day] = byDay[r.day] || []).push(r));
+    const days = Object.keys(byDay).sort().reverse();
+    jbox.innerHTML = days.map(day => {
+      const acted = byDay[day].some(r => r.action === "buy" || r.action === "sell");
+      const rows = byDay[day].map(r =>
+        `<tr><td>${r.symbol}</td>
+         <td style="color:${actColor(r.action)}">${actLabel[r.action] || r.action}</td>
+         <td style="text-align:left;color:var(--muted)">${r.reason}</td></tr>`).join("");
+      return `<div style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:4px">${day}
+          ${acted ? '<span class="badge" style="color:var(--green)">có giao dịch</span>'
+                  : '<span class="badge">không giao dịch</span>'}</div>
+        <table>${rows}</table></div>`;
+    }).join("");
+  }
+
+  // phân tích AI (nếu có)
+  const abox = document.getElementById("ai");
+  const ai = d.ai_analysis;
+  if (!ai || !ai.picks || !ai.picks.length) {
+    abox.innerHTML = `<div class="empty">Chưa có phân tích AI. Chạy screener ở repo chính để cập nhật.</div>`;
+  } else {
+    const upd = ai.generated_at ? new Date(ai.generated_at).toLocaleString("vi-VN") : "?";
+    const recColor = r => r === "mua" ? "var(--green)" : r === "tranh" ? "var(--red)" : "var(--accent)";
+    const rows = [...ai.picks].sort((a,b)=>b.score-a.score).map(p =>
+      `<tr><td>${p.symbol}</td><td>${p.score}/100</td>
+       <td style="color:${recColor(p.recommendation)}">${p.recommendation}</td>
+       <td style="text-align:left;color:var(--muted)">${p.rationale}</td></tr>`).join("");
+    abox.innerHTML =
+      `<p style="color:var(--muted);font-size:12px;margin:-4px 0 10px">
+         Claude (${ai.model || "?"}) đọc báo cáo tài chính, xếp hạng tiềm năng. Cập nhật: ${upd}.
+         Chỉ là cố vấn — risk gate vẫn là luật cuối.</p>
+       <table><thead><tr><th>Mã</th><th>Điểm</th><th>Khuyến nghị</th><th>Lý do</th></tr></thead>
+       <tbody>${rows}</tbody></table>`;
+  }
 
   // equity chart — tách 2 vùng tại GO-LIVE: Backtest (giá như) vs Live (thật)
   const curve = d.equity_curve;

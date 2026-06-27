@@ -14,6 +14,17 @@ from engine.paper import Config, run_tick
 from engine.store import Store
 
 BOARD_JSON = Path("docs/data.json")
+AI_WATCHLIST = Path("docs/ai_watchlist.json")   # do screener repo chính xuất ra (public-safe)
+
+
+def _load_ai_analysis() -> dict | None:
+    """Đọc phân tích AI nếu có. File KHÔNG chứa secret (chỉ điểm + lý do)."""
+    if not AI_WATCHLIST.exists():
+        return None
+    try:
+        return json.loads(AI_WATCHLIST.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return None
 
 
 def build_snapshot(cfg: Config, store: Store, feed: DataFeed, events: list[dict]) -> dict:
@@ -54,6 +65,14 @@ def build_snapshot(cfg: Config, store: Store, feed: DataFeed, events: list[dict]
 
     curve = [{"day": r["day"], "equity": round(r["equity"])} for r in store.equity_history()]
 
+    journal = [{
+        "day": r["day"], "symbol": r["symbol"], "action": r["action"],
+        "reason": r["reason"], "price": round(r["price"]) if r["price"] else None,
+    } for r in store.recent_decisions(15)]
+
+    # phân tích AI (nếu có file watchlist.json do screener ở repo chính xuất ra)
+    ai = _load_ai_analysis()
+
     return {
         "updated_at": datetime.now(tz=timezone.utc).isoformat(timespec="seconds"),
         "watchlist": list(cfg.watchlist),
@@ -70,6 +89,8 @@ def build_snapshot(cfg: Config, store: Store, feed: DataFeed, events: list[dict]
         "positions": positions,
         "orders": orders[-100:],          # 100 lệnh gần nhất
         "equity_curve": curve,
+        "daily_log": journal,             # nhật ký quyết định 15 phiên gần nhất
+        "ai_analysis": ai,                # phân tích AI (nếu có)
         "last_events": events,
     }
 

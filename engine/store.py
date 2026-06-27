@@ -28,6 +28,13 @@ CREATE TABLE IF NOT EXISTS realized_pnl (
     qty INTEGER NOT NULL, buy_price REAL NOT NULL, sell_price REAL NOT NULL, pnl REAL NOT NULL
 );
 CREATE TABLE IF NOT EXISTS equity_snapshots (day TEXT PRIMARY KEY, equity REAL NOT NULL, ts TEXT NOT NULL);
+-- Nhật ký quyết định: mỗi phiên, mỗi mã -> 1 dòng (kể cả HOLD) kèm lý do.
+CREATE TABLE IF NOT EXISTS daily_log (
+    day TEXT NOT NULL, symbol TEXT NOT NULL,
+    action TEXT NOT NULL,   -- buy | sell | hold | blocked | skip
+    reason TEXT NOT NULL, price REAL, ts TEXT NOT NULL,
+    PRIMARY KEY (day, symbol)
+);
 """
 
 
@@ -166,3 +173,23 @@ class Store:
 
     def equity_history(self):
         return self._conn.execute("SELECT day, equity FROM equity_snapshots ORDER BY day").fetchall()
+
+    # nhật ký quyết định hằng ngày (mỗi ngày + mã -> 1 dòng, kể cả HOLD)
+    def record_decision(self, day, symbol, action, reason, price=None, overwrite=False):
+        if not overwrite and self._conn.execute(
+            "SELECT 1 FROM daily_log WHERE day=? AND symbol=?", (day, symbol)
+        ).fetchone():
+            return
+        self._conn.execute(
+            "INSERT INTO daily_log(day,symbol,action,reason,price,ts) VALUES(?,?,?,?,?,?) "
+            "ON CONFLICT(day,symbol) DO UPDATE SET action=excluded.action, "
+            "reason=excluded.reason, price=excluded.price, ts=excluded.ts",
+            (day, symbol, action, reason, price, _now()))
+        self._conn.commit()
+
+    def recent_decisions(self, days: int = 15):
+        rows = self._conn.execute(
+            "SELECT day, symbol, action, reason, price FROM daily_log "
+            "WHERE day IN (SELECT DISTINCT day FROM daily_log ORDER BY day DESC LIMIT ?) "
+            "ORDER BY day DESC, symbol", (days,)).fetchall()
+        return rows
