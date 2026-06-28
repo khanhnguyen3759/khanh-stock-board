@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-27T03:20:00+00:00",
+  "updated_at": "2026-06-28T01:00:37+00:00",
   "watchlist": [
     "ACB",
     "FPT",
@@ -1445,6 +1445,10 @@
     {
       "day": "2026-06-27",
       "equity": 190086552
+    },
+    {
+      "day": "2026-06-28",
+      "equity": 190086552
     }
   ],
   "daily_log": [
@@ -1800,21 +1804,7 @@
       }
     ]
   },
-  "last_events": [
-    {
-      "symbol": "ACB",
-      "action": "skip_stale",
-      "reason": "Nến mới nhất 2026-06-26 ≠ hôm nay 2026-06-27 (ngày nghỉ/data chưa cập nhật)"
-    },
-    {
-      "symbol": "FPT",
-      "action": "skip_stale",
-      "reason": "Nến mới nhất 2026-06-26 ≠ hôm nay 2026-06-27 (ngày nghỉ/data chưa cập nhật)"
-    },
-    {
-      "symbol": "MWG",
-      "action": "skip_stale",
-      "reason": "Nến mới nhất 2026-06-26 ≠ hôm nay 2026-06-27 (ngày nghỉ/data chưa cập nhật)"
-    }
-  ]
+  "last_events": [],
+  "market_status": "Nghỉ cuối tuần",
+  "checked_at": "2026-06-28T08:00:30+07:00"
 }
