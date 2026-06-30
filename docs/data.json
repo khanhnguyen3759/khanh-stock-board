@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T04:00:37+00:00",
+  "updated_at": "2026-06-30T05:00:37+00:00",
   "watchlist": [
     "ACB",
     "FPT",
@@ -9,20 +9,20 @@
   "go_live": "2026-06-24",
   "strategy": "MA cross (10/20)",
   "cash": 127286552,
-  "market_value": 62560000,
-  "equity": 189846552,
+  "market_value": 62400000,
+  "equity": 189686552,
   "realized_pnl": -10380089,
-  "unrealized_pnl": 226640,
-  "total_pnl": -10153448,
+  "unrealized_pnl": 66640,
+  "total_pnl": -10313448,
   "order_count": 35,
   "positions": [
     {
       "symbol": "MWG",
       "qty": 800,
       "avg_price": 77917,
-      "last": 78200,
-      "market_value": 62560000,
-      "pnl": 226640
+      "last": 78000,
+      "market_value": 62400000,
+      "pnl": 66640
     }
   ],
   "orders": [
@@ -1456,7 +1456,7 @@
     },
     {
       "day": "2026-06-30",
-      "equity": 189846552
+      "equity": 189686552
     }
   ],
   "daily_log": [
@@ -1814,5 +1814,5 @@
   },
   "last_events": [],
   "market_status": "Đang mở cửa",
-  "checked_at": "2026-06-30T11:00:30+07:00"
+  "checked_at": "2026-06-30T12:00:30+07:00"
 }
