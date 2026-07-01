@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T08:00:20+00:00",
+  "updated_at": "2026-07-01T01:00:26+00:00",
   "watchlist": [
     "ACB",
     "FPT",
@@ -1457,9 +1457,34 @@
     {
       "day": "2026-06-30",
       "equity": 189766552
+    },
+    {
+      "day": "2026-07-01",
+      "equity": 189766552
     }
   ],
   "daily_log": [
+    {
+      "day": "2026-06-30",
+      "symbol": "ACB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 22650
+    },
+    {
+      "day": "2026-06-30",
+      "symbol": "FPT",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 70200
+    },
+    {
+      "day": "2026-06-30",
+      "symbol": "MWG",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 78100
+    },
     {
       "day": "2026-06-29",
       "symbol": "ACB",
@@ -1753,27 +1778,6 @@
       "action": "hold",
       "reason": "Không có giao cắt mới.",
       "price": 78200
-    },
-    {
-      "day": "2026-06-09",
-      "symbol": "ACB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 22830
-    },
-    {
-      "day": "2026-06-09",
-      "symbol": "FPT",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 73700
-    },
-    {
-      "day": "2026-06-09",
-      "symbol": "MWG",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 77400
     }
   ],
   "ai_analysis": {
@@ -1813,6 +1817,6 @@
     ]
   },
   "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-06-30T15:00:11+07:00"
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-07-01T08:00:18+07:00"
 }
