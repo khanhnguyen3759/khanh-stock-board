@@ -28,6 +28,23 @@ from .strategy import BUY, SELL, MACrossStrategy
 LOOKBACK_DAYS = 150
 
 
+def _load_watchlist() -> tuple[str, ...]:
+    """Ưu tiên watchlist do AI chọn (docs/ai_watchlist.json field 'watchlist');
+    fallback về env WATCHLIST rồi list mặc định."""
+    import json
+    from pathlib import Path
+    p = Path("docs/ai_watchlist.json")
+    if p.exists():
+        try:
+            wl = json.loads(p.read_text(encoding="utf-8")).get("watchlist") or []
+            if wl:
+                return tuple(s.upper() for s in wl)
+        except Exception:  # noqa: BLE001
+            pass
+    env = os.environ.get("WATCHLIST", "ACB,FPT,MWG")
+    return tuple(s.strip().upper() for s in env.split(",") if s.strip())
+
+
 @dataclass
 class Config:
     watchlist: tuple[str, ...]
@@ -39,10 +56,8 @@ class Config:
 
     @classmethod
     def load(cls) -> "Config":
-        wl = tuple(s.strip().upper()
-                   for s in os.environ.get("WATCHLIST", "ACB,FPT,MWG").split(",") if s.strip())
         return cls(
-            watchlist=wl,
+            watchlist=_load_watchlist(),
             paper_capital=int(os.environ.get("PAPER_CAPITAL", "200000000")),
             min_order_value=int(os.environ.get("MIN_ORDER_VALUE", "1000000")),
             ma_fast=int(os.environ.get("MA_FAST", "10")),
