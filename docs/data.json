@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-06T06:00:30+00:00",
+  "updated_at": "2026-07-06T07:00:35+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -11,36 +11,36 @@
   "go_live": "2026-07-02",
   "strategy": "MA cross (10/20)",
   "cash": 58040040,
-  "market_value": 117935000,
-  "equity": 175975040,
+  "market_value": 117230000,
+  "equity": 175270040,
   "realized_pnl": -27698825,
-  "unrealized_pnl": 3673865,
-  "total_pnl": -24024960,
+  "unrealized_pnl": 2968865,
+  "total_pnl": -24729960,
   "order_count": 57,
   "positions": [
     {
       "symbol": "CTG",
       "qty": 1100,
       "avg_price": 33650,
-      "last": 34450,
-      "market_value": 37895000,
-      "pnl": 879560
+      "last": 34200,
+      "market_value": 37620000,
+      "pnl": 604560
     },
     {
       "symbol": "MBB",
       "qty": 1600,
       "avg_price": 24837,
-      "last": 25700,
-      "market_value": 41120000,
-      "pnl": 1380480
+      "last": 25650,
+      "market_value": 41040000,
+      "pnl": 1300480
     },
     {
       "symbol": "VPB",
       "qty": 1400,
       "avg_price": 26790,
-      "last": 27800,
-      "market_value": 38920000,
-      "pnl": 1413825
+      "last": 27550,
+      "market_value": 38570000,
+      "pnl": 1063825
     }
   ],
   "orders": [
@@ -1686,7 +1686,7 @@
     },
     {
       "day": "2026-07-06",
-      "equity": 175975040
+      "equity": 175270040
     }
   ],
   "daily_log": [
@@ -2340,5 +2340,5 @@
   },
   "last_events": [],
   "market_status": "Đang mở cửa",
-  "checked_at": "2026-07-06T13:00:14+07:00"
+  "checked_at": "2026-07-06T14:00:26+07:00"
 }
