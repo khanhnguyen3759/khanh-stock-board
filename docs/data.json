@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T08:00:38+00:00",
+  "updated_at": "2026-07-09T01:00:37+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -11,11 +11,11 @@
   "go_live": "2026-07-02",
   "strategy": "MA cross (10/20)",
   "cash": 58040040,
-  "market_value": 118400000,
-  "equity": 176440040,
+  "market_value": 116800000,
+  "equity": 174840040,
   "realized_pnl": -27698825,
-  "unrealized_pnl": 4138865,
-  "total_pnl": -23559960,
+  "unrealized_pnl": 2538865,
+  "total_pnl": -25159960,
   "order_count": 57,
   "positions": [
     {
@@ -30,9 +30,9 @@
       "symbol": "MBB",
       "qty": 1600,
       "avg_price": 24837,
-      "last": 26000,
-      "market_value": 41600000,
-      "pnl": 1860480
+      "last": 25000,
+      "market_value": 40000000,
+      "pnl": 260480
     },
     {
       "symbol": "VPB",
@@ -1695,9 +1695,48 @@
     {
       "day": "2026-07-08",
       "equity": 176440040
+    },
+    {
+      "day": "2026-07-09",
+      "equity": 174840040
     }
   ],
   "daily_log": [
+    {
+      "day": "2026-07-08",
+      "symbol": "CTG",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 34500
+    },
+    {
+      "day": "2026-07-08",
+      "symbol": "FPT",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 72100
+    },
+    {
+      "day": "2026-07-08",
+      "symbol": "MBB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 26000
+    },
+    {
+      "day": "2026-07-08",
+      "symbol": "SHB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 13400
+    },
+    {
+      "day": "2026-07-08",
+      "symbol": "VPB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 27750
+    },
     {
       "day": "2026-07-07",
       "symbol": "CTG",
@@ -2187,41 +2226,6 @@
       "action": "hold",
       "reason": "Không có giao cắt mới.",
       "price": 26400
-    },
-    {
-      "day": "2026-06-17",
-      "symbol": "CTG",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 34300
-    },
-    {
-      "day": "2026-06-17",
-      "symbol": "FPT",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 72300
-    },
-    {
-      "day": "2026-06-17",
-      "symbol": "MBB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 25200
-    },
-    {
-      "day": "2026-06-17",
-      "symbol": "SHB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 14000
-    },
-    {
-      "day": "2026-06-17",
-      "symbol": "VPB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 26500
     }
   ],
   "ai_analysis": {
@@ -2347,6 +2351,6 @@
     ]
   },
   "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-07-08T15:00:30+07:00"
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-07-09T08:00:27+07:00"
 }
