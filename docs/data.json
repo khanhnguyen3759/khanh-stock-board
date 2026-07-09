@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09T08:00:28+00:00",
+  "updated_at": "2026-07-09T08:30:39+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -10,13 +10,13 @@
   "paper_capital": 200000000,
   "go_live": "2026-07-02",
   "strategy": "MA cross (10/20)",
-  "cash": 58040040,
-  "market_value": 114965000,
-  "equity": 173005040,
+  "cash": 21935965,
+  "market_value": 151015000,
+  "equity": 172950965,
   "realized_pnl": -27698825,
-  "unrealized_pnl": 703865,
-  "total_pnl": -26994960,
-  "order_count": 57,
+  "unrealized_pnl": 649790,
+  "total_pnl": -27049035,
+  "order_count": 58,
   "positions": [
     {
       "symbol": "CTG",
@@ -25,6 +25,14 @@
       "last": 34050,
       "market_value": 37455000,
       "pnl": 439560
+    },
+    {
+      "symbol": "FPT",
+      "qty": 500,
+      "avg_price": 72208,
+      "last": 72100,
+      "market_value": 36050000,
+      "pnl": -54075
     },
     {
       "symbol": "MBB",
@@ -613,6 +621,16 @@
       "price": 13600,
       "fees": 98600,
       "note": "Death cross: MA10 13,750 < MA20 13,768"
+    },
+    {
+      "trade_date": "2026-07-09",
+      "ts": "2026-07-09T08:30:38.387753+00:00",
+      "symbol": "FPT",
+      "side": "buy",
+      "qty": 500,
+      "price": 72100,
+      "fees": 54075,
+      "note": "Golden cross: MA10 71,950 > MA20 71,920"
     }
   ],
   "equity_curve": [
@@ -1698,10 +1716,45 @@
     },
     {
       "day": "2026-07-09",
-      "equity": 173005040
+      "equity": 172950965
     }
   ],
   "daily_log": [
+    {
+      "day": "2026-07-09",
+      "symbol": "CTG",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 34050
+    },
+    {
+      "day": "2026-07-09",
+      "symbol": "FPT",
+      "action": "buy",
+      "reason": "Golden cross: MA10 71,950 > MA20 71,920",
+      "price": 72100
+    },
+    {
+      "day": "2026-07-09",
+      "symbol": "MBB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 24600
+    },
+    {
+      "day": "2026-07-09",
+      "symbol": "SHB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 13350
+    },
+    {
+      "day": "2026-07-09",
+      "symbol": "VPB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 27250
+    },
     {
       "day": "2026-07-08",
       "symbol": "CTG",
@@ -2191,41 +2244,6 @@
       "action": "hold",
       "reason": "Không có giao cắt mới.",
       "price": 25900
-    },
-    {
-      "day": "2026-06-18",
-      "symbol": "CTG",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 33950
-    },
-    {
-      "day": "2026-06-18",
-      "symbol": "FPT",
-      "action": "sell",
-      "reason": "Death cross: MA10 73,310 < MA20 73,444",
-      "price": 71600
-    },
-    {
-      "day": "2026-06-18",
-      "symbol": "MBB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 25250
-    },
-    {
-      "day": "2026-06-18",
-      "symbol": "SHB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 13900
-    },
-    {
-      "day": "2026-06-18",
-      "symbol": "VPB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 26400
     }
   ],
   "ai_analysis": {
@@ -2350,7 +2368,46 @@
       }
     ]
   },
-  "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-07-09T15:00:19+07:00"
+  "last_events": [
+    {
+      "symbol": "CTG",
+      "bar": "2026-07-09",
+      "price": 34050.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "MBB",
+      "bar": "2026-07-09",
+      "price": 24600.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "SHB",
+      "bar": "2026-07-09",
+      "price": 13350.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "FPT",
+      "bar": "2026-07-09",
+      "price": 72100.0,
+      "action": "buy",
+      "reason": "Golden cross: MA10 71,950 > MA20 71,920",
+      "ok": true,
+      "skipped": false,
+      "qty": 500
+    },
+    {
+      "symbol": "VPB",
+      "bar": "2026-07-09",
+      "price": 27250.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    }
+  ],
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-07-09T15:30:21+07:00"
 }
