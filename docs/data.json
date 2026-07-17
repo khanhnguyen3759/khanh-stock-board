@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16T08:30:34+00:00",
+  "updated_at": "2026-07-17T01:00:37+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -1749,6 +1749,10 @@
     {
       "day": "2026-07-16",
       "equity": 166661315
+    },
+    {
+      "day": "2026-07-17",
+      "equity": 166661315
     }
   ],
   "daily_log": [
@@ -2400,46 +2404,7 @@
       }
     ]
   },
-  "last_events": [
-    {
-      "symbol": "CTG",
-      "bar": "2026-07-16",
-      "price": 32299.999999999996,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "MBB",
-      "bar": "2026-07-16",
-      "price": 24150.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "FPT",
-      "bar": "2026-07-16",
-      "price": 68000.0,
-      "action": "sell",
-      "reason": "Death cross: MA10 70,890 < MA20 71,020",
-      "ok": true,
-      "skipped": false,
-      "qty": 500
-    },
-    {
-      "symbol": "SHB",
-      "bar": "2026-07-16",
-      "price": 12700.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "DGC",
-      "bar": "2026-07-16",
-      "price": 44800.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    }
-  ],
+  "last_events": [],
   "market_status": "Đã đóng cửa",
-  "checked_at": "2026-07-16T15:30:24+07:00"
+  "checked_at": "2026-07-17T08:00:28+07:00"
 }
