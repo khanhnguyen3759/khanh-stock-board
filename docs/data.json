@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17T08:00:39+00:00",
+  "updated_at": "2026-07-18T01:00:30+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -1753,9 +1753,48 @@
     {
       "day": "2026-07-17",
       "equity": 165811315
+    },
+    {
+      "day": "2026-07-18",
+      "equity": 165811315
     }
   ],
   "daily_log": [
+    {
+      "day": "2026-07-17",
+      "symbol": "CTG",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 32000
+    },
+    {
+      "day": "2026-07-17",
+      "symbol": "DGC",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 44800
+    },
+    {
+      "day": "2026-07-17",
+      "symbol": "FPT",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 67000
+    },
+    {
+      "day": "2026-07-17",
+      "symbol": "MBB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 23750
+    },
+    {
+      "day": "2026-07-17",
+      "symbol": "SHB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 12650
+    },
     {
       "day": "2026-07-16",
       "symbol": "CTG",
@@ -2245,41 +2284,6 @@
       "action": "hold",
       "reason": "Không có giao cắt mới.",
       "price": 27050
-    },
-    {
-      "day": "2026-06-26",
-      "symbol": "CTG",
-      "action": "buy",
-      "reason": "Golden cross: MA10 33,825 > MA20 33,775",
-      "price": 33600
-    },
-    {
-      "day": "2026-06-26",
-      "symbol": "FPT",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 70800
-    },
-    {
-      "day": "2026-06-26",
-      "symbol": "MBB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 24750
-    },
-    {
-      "day": "2026-06-26",
-      "symbol": "SHB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 13650
-    },
-    {
-      "day": "2026-06-26",
-      "symbol": "VPB",
-      "action": "buy",
-      "reason": "Golden cross: MA10 26,395 > MA20 26,315",
-      "price": 26750
     }
   ],
   "ai_analysis": {
@@ -2405,6 +2409,6 @@
     ]
   },
   "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-07-17T15:00:30+07:00"
+  "market_status": "Nghỉ cuối tuần",
+  "checked_at": "2026-07-18T08:00:18+07:00"
 }
