@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21T08:00:39+00:00",
+  "updated_at": "2026-07-21T08:30:28+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -10,22 +10,14 @@
   "paper_capital": 200000000,
   "go_live": "2026-07-02",
   "strategy": "MA cross (10/20)",
-  "cash": 91621315,
-  "market_value": 71810000,
-  "equity": 163431315,
-  "realized_pnl": -31132990,
-  "unrealized_pnl": -5435695,
-  "total_pnl": -36568685,
-  "order_count": 60,
+  "cash": 127850515,
+  "market_value": 35490000,
+  "equity": 163340515,
+  "realized_pnl": -34643310,
+  "unrealized_pnl": -2016175,
+  "total_pnl": -36659485,
+  "order_count": 61,
   "positions": [
-    {
-      "symbol": "MBB",
-      "qty": 1600,
-      "avg_price": 24837,
-      "last": 22700,
-      "market_value": 36320000,
-      "pnl": -3419520
-    },
     {
       "symbol": "VPB",
       "qty": 1400,
@@ -635,6 +627,16 @@
       "price": 68000,
       "fees": 85000,
       "note": "Death cross: MA10 70,890 < MA20 71,020"
+    },
+    {
+      "trade_date": "2026-07-21",
+      "ts": "2026-07-21T08:30:27.265926+00:00",
+      "symbol": "MBB",
+      "side": "sell",
+      "qty": 1600,
+      "price": 22700,
+      "fees": 90800,
+      "note": "Death cross: MA10 24,060 < MA20 24,174"
     }
   ],
   "equity_curve": [
@@ -1768,10 +1770,45 @@
     },
     {
       "day": "2026-07-21",
-      "equity": 163431315
+      "equity": 163340515
     }
   ],
   "daily_log": [
+    {
+      "day": "2026-07-21",
+      "symbol": "CTG",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 30900
+    },
+    {
+      "day": "2026-07-21",
+      "symbol": "DGC",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 43000
+    },
+    {
+      "day": "2026-07-21",
+      "symbol": "FPT",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 64800
+    },
+    {
+      "day": "2026-07-21",
+      "symbol": "MBB",
+      "action": "sell",
+      "reason": "Death cross: MA10 24,060 < MA20 24,174",
+      "price": 22700
+    },
+    {
+      "day": "2026-07-21",
+      "symbol": "SHB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 11800
+    },
     {
       "day": "2026-07-20",
       "symbol": "CTG",
@@ -2261,41 +2298,6 @@
       "action": "hold",
       "reason": "Không có giao cắt mới.",
       "price": 27700
-    },
-    {
-      "day": "2026-06-30",
-      "symbol": "CTG",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 33950
-    },
-    {
-      "day": "2026-06-30",
-      "symbol": "FPT",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 70200
-    },
-    {
-      "day": "2026-06-30",
-      "symbol": "MBB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 25200
-    },
-    {
-      "day": "2026-06-30",
-      "symbol": "SHB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 13550
-    },
-    {
-      "day": "2026-06-30",
-      "symbol": "VPB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 27000
     }
   ],
   "ai_analysis": {
@@ -2420,7 +2422,46 @@
       }
     ]
   },
-  "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-07-21T15:00:30+07:00"
+  "last_events": [
+    {
+      "symbol": "CTG",
+      "bar": "2026-07-21",
+      "price": 30900.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "MBB",
+      "bar": "2026-07-21",
+      "price": 22700.0,
+      "action": "sell",
+      "reason": "Death cross: MA10 24,060 < MA20 24,174",
+      "ok": true,
+      "skipped": false,
+      "qty": 1600
+    },
+    {
+      "symbol": "SHB",
+      "bar": "2026-07-21",
+      "price": 11800.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "FPT",
+      "bar": "2026-07-21",
+      "price": 64800.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "DGC",
+      "bar": "2026-07-21",
+      "price": 43000.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    }
+  ],
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-07-21T15:30:19+07:00"
 }
