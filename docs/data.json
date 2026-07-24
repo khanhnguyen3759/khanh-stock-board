@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23T08:00:39+00:00",
+  "updated_at": "2026-07-24T01:00:23+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -1779,9 +1779,48 @@
     {
       "day": "2026-07-23",
       "equity": 162850515
+    },
+    {
+      "day": "2026-07-24",
+      "equity": 162850515
     }
   ],
   "daily_log": [
+    {
+      "day": "2026-07-23",
+      "symbol": "CTG",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 29050
+    },
+    {
+      "day": "2026-07-23",
+      "symbol": "DGC",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 37950
+    },
+    {
+      "day": "2026-07-23",
+      "symbol": "FPT",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 64700
+    },
+    {
+      "day": "2026-07-23",
+      "symbol": "MBB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 22050
+    },
+    {
+      "day": "2026-07-23",
+      "symbol": "SHB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 12000
+    },
     {
       "day": "2026-07-22",
       "symbol": "CTG",
@@ -2271,41 +2310,6 @@
       "action": "hold",
       "reason": "Không có giao cắt mới.",
       "price": 27800
-    },
-    {
-      "day": "2026-07-02",
-      "symbol": "CTG",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 34250
-    },
-    {
-      "day": "2026-07-02",
-      "symbol": "FPT",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 72500
-    },
-    {
-      "day": "2026-07-02",
-      "symbol": "MBB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 25650
-    },
-    {
-      "day": "2026-07-02",
-      "symbol": "SHB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 13700
-    },
-    {
-      "day": "2026-07-02",
-      "symbol": "VPB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 27700
     }
   ],
   "ai_analysis": {
@@ -2431,6 +2435,6 @@
     ]
   },
   "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-07-23T15:00:30+07:00"
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-07-24T08:00:13+07:00"
 }
