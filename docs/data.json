@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-07-26T01:00:12+00:00",
+  "updated_at": "2026-07-27T01:00:39+00:00",
   "watchlist": [
     "CTG",
     "MBB",
-    "SHB",
     "FPT",
+    "SHB",
     "DGC"
   ],
   "paper_capital": 200000000,
@@ -1791,6 +1791,10 @@
     {
       "day": "2026-07-26",
       "equity": 162780515
+    },
+    {
+      "day": "2026-07-27",
+      "equity": 162780515
     }
   ],
   "daily_log": [
@@ -2321,14 +2325,14 @@
     }
   ],
   "ai_analysis": {
-    "generated_at": "2026-07-20T00:31:00+00:00",
+    "generated_at": "2026-07-27T00:30:55+00:00",
     "model": "claude-opus-4-8",
     "score_min": 70,
     "watchlist": [
       "CTG",
       "MBB",
-      "SHB",
       "FPT",
+      "SHB",
       "DGC"
     ],
     "picks": [
@@ -2336,113 +2340,113 @@
         "symbol": "CTG",
         "score": 85.0,
         "recommendation": "mua",
-        "rationale": "Định giá rất rẻ (P/E 5.55, P/B 1.07), ROE cao 21%, tăng trưởng lợi nhuận 36.5% và giảm dự phòng cho thấy chất lượng tài sản cải thiện."
+        "rationale": "Định giá rất rẻ (P/E 5.55, P/B 1.07) đi cùng ROE cao 21% và tăng trưởng LNST 36.5%, sức khỏe sinh lời ngân hàng quốc doanh vững."
       },
       {
         "symbol": "MBB",
-        "score": 83.0,
+        "score": 84.0,
         "recommendation": "mua",
-        "rationale": "ROE 20.7%, NIM cao 3.89%, tăng trưởng LN 18% và tín dụng mạnh, định giá hấp dẫn (P/E 6.36, P/B 1.43)."
-      },
-      {
-        "symbol": "SHB",
-        "score": 80.0,
-        "recommendation": "mua",
-        "rationale": "Định giá rất rẻ (P/E 5.67, P/B 1.1), ROE 19%, tăng trưởng LN 28% và có cổ tức; cờ đỏ là COF cao và NIM mỏng."
+        "rationale": "ROE 20.7%, NIM cao 3.89%, tăng trưởng lợi nhuận 18% với định giá hấp dẫn (P/E 6.36), chất lượng tài sản và tăng trưởng tín dụng mạnh."
       },
       {
         "symbol": "FPT",
+        "score": 80.0,
+        "recommendation": "mua",
+        "rationale": "Biên gộp 37%, ROE 23.6%, tăng trưởng ổn định; định giá cao (P/E 15.9, P/B 3.7) nhưng chất lượng doanh nghiệp đầu ngành công nghệ bù đắp."
+      },
+      {
+        "symbol": "SHB",
         "score": 78.0,
         "recommendation": "mua",
-        "rationale": "ROE 23.6%, biên gộp 37% và tăng trưởng ổn định, chất lượng lợi nhuận cao; định giá hơi cao (P/E 15.9, P/B 3.73)."
+        "rationale": "Định giá cực rẻ (P/E 5.67, P/B 1.1), ROE 18.95% và tăng trưởng LNTT 30%; cờ đỏ nhẹ là NIM thấp và COF cao."
       },
       {
         "symbol": "DGC",
         "score": 74.0,
         "recommendation": "mua",
-        "rationale": "ROE 20.6%, ROA 17%, biên lợi nhuận tốt và định giá hợp lý (P/E 8.7); tuy nhiên tăng trưởng LN gần như đi ngang và nợ phải trả tăng mạnh."
-      },
-      {
-        "symbol": "VPB",
-        "score": 72.0,
-        "recommendation": "mua",
-        "rationale": "NIM cao nhất nhóm 5.67%, ROA 2.2%, tăng trưởng LN 53% mạnh mẽ; định giá hợp lý nhưng ROE 14.9% chưa nổi bật và mảng tín dụng tiêu dùng rủi ro."
-      },
-      {
-        "symbol": "ACB",
-        "score": 68.0,
-        "recommendation": "mua",
-        "rationale": "Định giá rẻ (P/E 7.43, P/B 1.3), ROE 17.6%, có cổ tức; cờ đỏ là lợi nhuận giảm nhẹ ~7% và NIM thu hẹp."
+        "rationale": "Sinh lời cao (ROE 21.7%, ROA 16.9%), bảng cân đối lành mạnh, định giá hợp lý (P/E 8.7); tăng trưởng lợi nhuận gần như đi ngang là điểm cần theo dõi."
       },
       {
         "symbol": "VNM",
-        "score": 63.0,
-        "recommendation": "theo_doi",
-        "rationale": "Sinh lời rất cao (ROE 26.6%, biên gộp 41%) và cổ tức tốt 8%, nhưng tăng trưởng gần như đình trệ và định giá không rẻ (P/B 3.71)."
+        "score": 70.0,
+        "recommendation": "mua",
+        "rationale": "ROE 26.6%, biên gộp 41%, cổ tức cao 8%; hạn chế là tăng trưởng đình trệ và định giá không còn rẻ (P/B 3.7)."
+      },
+      {
+        "symbol": "ACB",
+        "score": 69.0,
+        "recommendation": "mua",
+        "rationale": "Định giá rẻ (P/E 7.43, P/B 1.3), ROE 17.6%, chất lượng ổn định; lợi nhuận giảm nhẹ ~7% là cờ đỏ ngắn hạn."
       },
       {
         "symbol": "MWG",
-        "score": 62.0,
-        "recommendation": "theo_doi",
-        "rationale": "ROE 23%, tăng trưởng LN 89% ấn tượng nhưng định giá cao (P/E 18.5, P/B 3.94), biên lợi nhuận ròng mỏng."
+        "score": 68.0,
+        "recommendation": "mua",
+        "rationale": "Phục hồi lợi nhuận mạnh (LNST +89%), ROE 23%; định giá đắt (P/E 18.5, P/B 3.94) là rủi ro cần cân nhắc."
+      },
+      {
+        "symbol": "VPB",
+        "score": 66.0,
+        "recommendation": "mua",
+        "rationale": "Tăng trưởng lợi nhuận cao 52%, NIM tốt 5.58%, định giá hợp lý (P/B 1.26); ROE trung bình và chi phí vốn cao là điểm hạn chế."
       },
       {
         "symbol": "HPG",
-        "score": 60.0,
+        "score": 62.0,
         "recommendation": "theo_doi",
-        "rationale": "Tăng trưởng LN 28.5%, ROA tốt 6.4% nhưng ROE 12.6% và biên gộp thấp; định giá trung bình (P/E 12)."
-      },
-      {
-        "symbol": "POW",
-        "score": 54.0,
-        "recommendation": "theo_doi",
-        "rationale": "Định giá thấp (P/B 0.8), LN tăng mạnh 118% nhờ nền thấp, nhưng ROE chỉ 6.75% và không cổ tức, nợ dài hạn tăng."
+        "rationale": "Tăng trưởng lợi nhuận 28%, ROA tốt; nhưng ngành thép chu kỳ, biên gộp mỏng và định giá không rẻ (P/E 12)."
       },
       {
         "symbol": "STB",
-        "score": 53.0,
+        "score": 58.0,
         "recommendation": "theo_doi",
-        "rationale": "Tăng trưởng tài sản và thu nhập tốt nhưng LN giảm 41% do dự phòng tăng 126%, định giá đắt hơn nhóm (P/E 18.4), ROE thấp 10.3%."
-      },
-      {
-        "symbol": "VIX",
-        "score": 50.0,
-        "recommendation": "theo_doi",
-        "rationale": "ROE 28.9% và tăng trưởng LN đột biến 715% nhưng phụ thuộc thị trường chứng khoán, nợ tăng vọt 257% và không cổ tức là cờ đỏ về tính bền vững."
+        "rationale": "Tăng trưởng tổng thu nhập tốt nhưng lợi nhuận giảm mạnh 41% do dự phòng tăng 126%; định giá đắt tương đối (P/E 18.4), ROE thấp 10.3%."
       },
       {
         "symbol": "SSI",
-        "score": 49.0,
+        "score": 57.0,
         "recommendation": "theo_doi",
-        "rationale": "Tăng trưởng LN 45% và biên gộp cao, nhưng ROE 14% trung bình, định giá không rẻ (P/E 14.7, P/S 4.86) và mang tính chu kỳ."
+        "rationale": "Tăng trưởng lợi nhuận 45% nhờ chu kỳ chứng khoán, biên gộp cao; ROE trung bình 14% và định giá không rẻ (P/E 14.7)."
       },
       {
-        "symbol": "HSG",
-        "score": 46.0,
+        "symbol": "VIX",
+        "score": 55.0,
         "recommendation": "theo_doi",
-        "rationale": "Định giá dưới sổ sách (P/B 0.86) và LN phục hồi, nhưng ROE thấp 6.6%, doanh thu giảm và biên EBIT mỏng 2.8%."
+        "rationale": "ROE 28.85% và lợi nhuận bùng nổ nhưng nền so sánh thấp, tăng nợ vay tài chính rất mạnh; lợi nhuận chứng khoán biến động cao, cần thận trọng."
+      },
+      {
+        "symbol": "POW",
+        "score": 52.0,
+        "recommendation": "theo_doi",
+        "rationale": "Định giá rẻ (P/B 0.8) và lợi nhuận phục hồi mạnh; nhưng ROE thấp 6.75% và biên mỏng đặc thù ngành điện."
       },
       {
         "symbol": "VND",
-        "score": 42.0,
+        "score": 50.0,
         "recommendation": "theo_doi",
-        "rationale": "ROE thấp 9.96%, định giá cao (P/E 14.6, P/S 4.46), nợ dài hạn tăng đột biến; kém hấp dẫn hơn các CTCK cùng ngành."
+        "rationale": "Tăng trưởng doanh thu tốt nhưng ROE thấp 9.96%, nợ dài hạn tăng đột biến; định giá tương đối cao so với sinh lời."
+      },
+      {
+        "symbol": "HSG",
+        "score": 48.0,
+        "recommendation": "theo_doi",
+        "rationale": "Định giá rẻ theo P/B 0.86; nhưng ROE thấp 6.6%, biên mỏng và doanh thu giảm, đặc thù chu kỳ tôn thép."
       },
       {
         "symbol": "DIG",
-        "score": 38.0,
+        "score": 42.0,
         "recommendation": "tranh",
-        "rationale": "ROE thấp 7.16%, LN tăng đột biến từ nền rất thấp và định giá cao (P/E 16.4); rủi ro bất động sản và tính bền vững lợi nhuận thấp."
+        "rationale": "Lợi nhuận tăng đột biến từ nền rất thấp, ROE chỉ 7.16%, định giá đắt (P/E 16.4); rủi ro bất động sản và chất lượng lợi nhuận thiếu bền vững."
       },
       {
         "symbol": "GEX",
-        "score": 35.0,
+        "score": 38.0,
         "recommendation": "tranh",
-        "rationale": "ROE rất thấp 5.53%, định giá đắt (P/E 26.1), LN sau thuế cổ đông mẹ giảm 9.4% dù doanh thu tăng, nợ tăng mạnh là cờ đỏ."
+        "rationale": "ROE rất thấp 5.53%, LNST cổ đông mẹ giảm 9.4%, định giá đắt (P/E 26), nợ vay tăng mạnh; cờ đỏ về đòn bẩy và sinh lời."
       }
     ]
   },
   "last_events": [],
-  "market_status": "Nghỉ cuối tuần",
-  "checked_at": "2026-07-26T08:00:04+07:00"
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-07-27T08:00:29+07:00"
 }
