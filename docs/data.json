@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T08:00:20+00:00",
+  "updated_at": "2026-08-07T08:30:31+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -10,14 +10,30 @@
   "paper_capital": 200000000,
   "go_live": "2026-07-02",
   "strategy": "MA cross (10/20)",
-  "cash": 127850515,
-  "market_value": 35000000,
-  "equity": 162850515,
+  "cash": 53338915,
+  "market_value": 109400000,
+  "equity": 162738915,
   "realized_pnl": -34643310,
-  "unrealized_pnl": -2506175,
-  "total_pnl": -37149485,
-  "order_count": 61,
+  "unrealized_pnl": -2617775,
+  "total_pnl": -37261085,
+  "order_count": 63,
   "positions": [
+    {
+      "symbol": "CTG",
+      "qty": 1200,
+      "avg_price": 32549,
+      "last": 32500,
+      "market_value": 39000000,
+      "pnl": -58500
+    },
+    {
+      "symbol": "FPT",
+      "qty": 500,
+      "avg_price": 70906,
+      "last": 70800,
+      "market_value": 35400000,
+      "pnl": -53100
+    },
     {
       "symbol": "VPB",
       "qty": 1400,
@@ -637,6 +653,26 @@
       "price": 22700,
       "fees": 90800,
       "note": "Death cross: MA10 24,060 < MA20 24,174"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "ts": "2026-08-07T08:30:28.881056+00:00",
+      "symbol": "CTG",
+      "side": "buy",
+      "qty": 1200,
+      "price": 32500,
+      "fees": 58500,
+      "note": "Golden cross: MA10 30,770 > MA20 30,747"
+    },
+    {
+      "trade_date": "2026-08-07",
+      "ts": "2026-08-07T08:30:29.719714+00:00",
+      "symbol": "FPT",
+      "side": "buy",
+      "qty": 500,
+      "price": 70800,
+      "fees": 53100,
+      "note": "Golden cross: MA10 67,940 > MA20 67,305"
     }
   ],
   "equity_curve": [
@@ -1838,10 +1874,45 @@
     },
     {
       "day": "2026-08-07",
-      "equity": 162850515
+      "equity": 162738915
     }
   ],
   "daily_log": [
+    {
+      "day": "2026-08-07",
+      "symbol": "CTG",
+      "action": "buy",
+      "reason": "Golden cross: MA10 30,770 > MA20 30,747",
+      "price": 32500
+    },
+    {
+      "day": "2026-08-07",
+      "symbol": "FPT",
+      "action": "buy",
+      "reason": "Golden cross: MA10 67,940 > MA20 67,305",
+      "price": 70800
+    },
+    {
+      "day": "2026-08-07",
+      "symbol": "MBB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 24150
+    },
+    {
+      "day": "2026-08-07",
+      "symbol": "SHB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 11700
+    },
+    {
+      "day": "2026-08-07",
+      "symbol": "VPB",
+      "action": "hold",
+      "reason": "Không có giao cắt mới.",
+      "price": 25000
+    },
     {
       "day": "2026-08-06",
       "symbol": "CTG",
@@ -2331,41 +2402,6 @@
       "action": "hold",
       "reason": "Không có giao cắt mới.",
       "price": 11800
-    },
-    {
-      "day": "2026-07-17",
-      "symbol": "CTG",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 32000
-    },
-    {
-      "day": "2026-07-17",
-      "symbol": "DGC",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 44800
-    },
-    {
-      "day": "2026-07-17",
-      "symbol": "FPT",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 67000
-    },
-    {
-      "day": "2026-07-17",
-      "symbol": "MBB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 23750
-    },
-    {
-      "day": "2026-07-17",
-      "symbol": "SHB",
-      "action": "hold",
-      "reason": "Không có giao cắt mới.",
-      "price": 12650
     }
   ],
   "ai_analysis": {
@@ -2490,7 +2526,49 @@
       }
     ]
   },
-  "last_events": [],
-  "market_status": "Đang mở cửa",
-  "checked_at": "2026-08-07T15:00:11+07:00"
+  "last_events": [
+    {
+      "symbol": "CTG",
+      "bar": "2026-08-07",
+      "price": 32500.0,
+      "action": "buy",
+      "reason": "Golden cross: MA10 30,770 > MA20 30,747",
+      "ok": true,
+      "skipped": false,
+      "qty": 1200
+    },
+    {
+      "symbol": "MBB",
+      "bar": "2026-08-07",
+      "price": 24150.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "SHB",
+      "bar": "2026-08-07",
+      "price": 11700.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    },
+    {
+      "symbol": "FPT",
+      "bar": "2026-08-07",
+      "price": 70800.0,
+      "action": "buy",
+      "reason": "Golden cross: MA10 67,940 > MA20 67,305",
+      "ok": true,
+      "skipped": false,
+      "qty": 500
+    },
+    {
+      "symbol": "VPB",
+      "bar": "2026-08-07",
+      "price": 25000.0,
+      "action": "hold",
+      "reason": "Không có giao cắt mới."
+    }
+  ],
+  "market_status": "Đã đóng cửa",
+  "checked_at": "2026-08-07T15:30:11+07:00"
 }
