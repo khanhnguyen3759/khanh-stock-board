@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T08:30:31+00:00",
+  "updated_at": "2026-08-08T01:00:25+00:00",
   "watchlist": [
     "CTG",
     "MBB",
@@ -1874,6 +1874,10 @@
     },
     {
       "day": "2026-08-07",
+      "equity": 162797415
+    },
+    {
+      "day": "2026-08-08",
       "equity": 162738915
     }
   ],
@@ -2526,49 +2530,7 @@
       }
     ]
   },
-  "last_events": [
-    {
-      "symbol": "CTG",
-      "bar": "2026-08-07",
-      "price": 32500.0,
-      "action": "buy",
-      "reason": "Golden cross: MA10 30,770 > MA20 30,747",
-      "ok": true,
-      "skipped": false,
-      "qty": 1200
-    },
-    {
-      "symbol": "MBB",
-      "bar": "2026-08-07",
-      "price": 24150.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "SHB",
-      "bar": "2026-08-07",
-      "price": 11700.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "FPT",
-      "bar": "2026-08-07",
-      "price": 70800.0,
-      "action": "buy",
-      "reason": "Golden cross: MA10 67,940 > MA20 67,305",
-      "ok": true,
-      "skipped": false,
-      "qty": 500
-    },
-    {
-      "symbol": "VPB",
-      "bar": "2026-08-07",
-      "price": 25000.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    }
-  ],
-  "market_status": "Đã đóng cửa",
-  "checked_at": "2026-08-07T15:30:11+07:00"
+  "last_events": [],
+  "market_status": "Nghỉ cuối tuần",
+  "checked_at": "2026-08-08T08:00:18+07:00"
 }
