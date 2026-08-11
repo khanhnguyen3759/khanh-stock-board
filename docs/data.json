@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T08:30:39+00:00",
+  "updated_at": "2026-08-11T01:00:27+00:00",
   "watchlist": [
     "MBB",
     "CTG",
@@ -11,11 +11,11 @@
   "go_live": "2026-07-02",
   "strategy": "MA cross (10/20)",
   "cash": 14480715,
-  "market_value": 150250000,
-  "equity": 164730715,
+  "market_value": 143770000,
+  "equity": 158250715,
   "realized_pnl": -34643310,
-  "unrealized_pnl": -625975,
-  "total_pnl": -35269285,
+  "unrealized_pnl": -7105975,
+  "total_pnl": -41749285,
   "order_count": 64,
   "positions": [
     {
@@ -38,9 +38,9 @@
       "symbol": "MBB",
       "qty": 1600,
       "avg_price": 24286,
-      "last": 24250,
-      "market_value": 38800000,
-      "pnl": -58200
+      "last": 20200,
+      "market_value": 32320000,
+      "pnl": -6538200
     },
     {
       "symbol": "VPB",
@@ -1905,6 +1905,10 @@
     {
       "day": "2026-08-10",
       "equity": 164730715
+    },
+    {
+      "day": "2026-08-11",
+      "equity": 158250715
     }
   ],
   "daily_log": [
@@ -2556,46 +2560,7 @@
       }
     ]
   },
-  "last_events": [
-    {
-      "symbol": "MBB",
-      "bar": "2026-08-10",
-      "price": 24250.0,
-      "action": "buy",
-      "reason": "Golden cross: MA10 23,425 > MA20 23,205",
-      "ok": true,
-      "skipped": false,
-      "qty": 1600
-    },
-    {
-      "symbol": "CTG",
-      "bar": "2026-08-10",
-      "price": 32800.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "SHB",
-      "bar": "2026-08-10",
-      "price": 12000.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "VPB",
-      "bar": "2026-08-10",
-      "price": 25850.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    },
-    {
-      "symbol": "FPT",
-      "bar": "2026-08-10",
-      "price": 71800.0,
-      "action": "hold",
-      "reason": "Không có giao cắt mới."
-    }
-  ],
+  "last_events": [],
   "market_status": "Đã đóng cửa",
-  "checked_at": "2026-08-10T15:30:30+07:00"
+  "checked_at": "2026-08-11T08:00:18+07:00"
 }
